@@ -20,11 +20,13 @@ void vidDump(uint8* Array, uint8 u8Size){
 }    
 void vidTest(){
 
-uint8* pu81;
+uint8* pu81, *pu81_1;
 uint8* pu82;
 
-pu81 = new uint8[MEMORY_SIZE];
+pu81 = new uint8[MEMORY_SIZE]();
+pu81_1 = new uint8 [MEMORY_SIZE];
 pu82 = (uint8*)malloc(MEMORY_SIZE);
+vidDump(pu81_1, MEMORY_SIZE);
 vidDump(pu81, MEMORY_SIZE);
 vidDump(pu82, MEMORY_SIZE);
 

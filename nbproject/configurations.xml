@@ -15,6 +15,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>buffer.cpp</itemPath>
+      <itemPath>classes_test.cpp</itemPath>
       <itemPath>containers.cpp</itemPath>
       <itemPath>dynamic_allocation.cpp</itemPath>
       <itemPath>functions.cpp</itemPath>
@@ -52,6 +53,8 @@
       </item>
       <item path="buffer.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="classes_test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="containers.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="dynamic_allocation.cpp" ex="false" tool="1" flavor2="0">
@@ -87,6 +90,8 @@
       <item path="buffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="buffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="classes_test.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="containers.cpp" ex="false" tool="1" flavor2="0">
       </item>

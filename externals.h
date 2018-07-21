@@ -41,5 +41,10 @@ namespace dynamic_allocation{
     
     void main();
 }
+
+namespace classes_test{
+    
+    void main();
+}
 #endif /* CONTAINERS_H */
 

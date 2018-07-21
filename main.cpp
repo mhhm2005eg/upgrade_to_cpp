@@ -85,6 +85,9 @@ int main(int argc, char** argv) {
 
  
  dynamic_allocation::main();
+ classes_test::main();
+ 
+ 
  
   return 0;
  
