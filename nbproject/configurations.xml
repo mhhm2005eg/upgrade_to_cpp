@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="100">
+<configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>C:/Work/projectes/upgrade_to_cpp/buffer.h</itemPath>
-      <itemPath>C:/Work/projectes/upgrade_to_cpp/externals.h</itemPath>
+      <itemPath>buffer.h</itemPath>
+      <itemPath>externals.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,9 +14,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>C:/Work/projectes/upgrade_to_cpp/buffer.cpp</itemPath>
-      <itemPath>C:/Work/projectes/upgrade_to_cpp/containers.cpp</itemPath>
-      <itemPath>C:/Work/projectes/upgrade_to_cpp/functions.cpp</itemPath>
+      <itemPath>buffer.cpp</itemPath>
+      <itemPath>containers.cpp</itemPath>
+      <itemPath>dynamic_allocation.cpp</itemPath>
+      <itemPath>functions.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -40,34 +41,24 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <standard>8</standard>
+        </ccTool>
         <linkerTool>
-          <stripSymbols>true</stripSymbols>
+          <commandLine>-lboost_system -lboost_timer -lboost_chrono -lrt</commandLine>
         </linkerTool>
       </compileType>
-      <item path="C:/Work/projectes/upgrade_to_cpp/buffer.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
+      <item path="buffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="C:/Work/projectes/upgrade_to_cpp/buffer.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="buffer.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="C:/Work/projectes/upgrade_to_cpp/containers.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
+      <item path="containers.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="C:/Work/projectes/upgrade_to_cpp/externals.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="dynamic_allocation.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="C:/Work/projectes/upgrade_to_cpp/functions.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
+      <item path="externals.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="functions.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -84,6 +75,7 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <standard>8</standard>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -92,30 +84,17 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="C:/Work/projectes/upgrade_to_cpp/buffer.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
+      <item path="buffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="C:/Work/projectes/upgrade_to_cpp/buffer.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="buffer.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="C:/Work/projectes/upgrade_to_cpp/containers.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
+      <item path="containers.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="C:/Work/projectes/upgrade_to_cpp/externals.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="dynamic_allocation.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="C:/Work/projectes/upgrade_to_cpp/functions.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
+      <item path="externals.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="functions.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

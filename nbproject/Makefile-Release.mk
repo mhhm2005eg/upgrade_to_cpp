@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=GNU-Linux
+CND_DLIB_EXT=so
 CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -35,9 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/df7bcc50/buffer.o \
-	${OBJECTDIR}/_ext/df7bcc50/containers.o \
-	${OBJECTDIR}/_ext/df7bcc50/functions.o \
+	${OBJECTDIR}/buffer.o \
+	${OBJECTDIR}/containers.o \
+	${OBJECTDIR}/dynamic_allocation.o \
+	${OBJECTDIR}/functions.o \
 	${OBJECTDIR}/main.o
 
 
@@ -59,31 +60,36 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/upgrade_to_cpp.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/upgrade_to_cpp
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/upgrade_to_cpp.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/upgrade_to_cpp: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/upgrade_to_cpp ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/df7bcc50/buffer.o: /C/Work/projectes/upgrade_to_cpp/buffer.cpp
-	${MKDIR} -p ${OBJECTDIR}/_ext/df7bcc50
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/df7bcc50/buffer.o /C/Work/projectes/upgrade_to_cpp/buffer.cpp
-
-${OBJECTDIR}/_ext/df7bcc50/containers.o: /C/Work/projectes/upgrade_to_cpp/containers.cpp
-	${MKDIR} -p ${OBJECTDIR}/_ext/df7bcc50
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/df7bcc50/containers.o /C/Work/projectes/upgrade_to_cpp/containers.cpp
-
-${OBJECTDIR}/_ext/df7bcc50/functions.o: /C/Work/projectes/upgrade_to_cpp/functions.cpp
-	${MKDIR} -p ${OBJECTDIR}/_ext/df7bcc50
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/df7bcc50/functions.o /C/Work/projectes/upgrade_to_cpp/functions.cpp
-
-${OBJECTDIR}/main.o: main.cpp
+${OBJECTDIR}/buffer.o: buffer.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/buffer.o buffer.cpp
+
+${OBJECTDIR}/containers.o: containers.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/containers.o containers.cpp
+
+${OBJECTDIR}/dynamic_allocation.o: dynamic_allocation.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/dynamic_allocation.o dynamic_allocation.cpp
+
+${OBJECTDIR}/functions.o: functions.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/functions.o functions.cpp
+
+${OBJECTDIR}/main.o: main.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
@@ -91,6 +97,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/upgrade_to_cpp
 
 # Subprojects
 .clean-subprojects:

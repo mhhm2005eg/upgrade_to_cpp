@@ -50,12 +50,19 @@ void buffer::PushVector(std::vector<uint8> Vector){
         //cout<<this->at(i)<<"\t";
     }
 }
-void buffer::PushAuto(auto Vector){
+#if __cplusplus > 201103L 
+void buffer::PushAuto(auto Vector)
+#else
+template <typename T> void buffer::PushAuto(T Vector)
+
+#endif
+{
         for (std::size_t i=0; i<Vector.size(); i++){
         this->push_back(Vector.at(i)); 
         //cout<<this->at(i)<<"\t";
     }
 }
+
 std::size_t buffer::GetFreeSize(){
     return (this->capacity()-this->size());
 }
@@ -73,7 +80,9 @@ void main(){
     array<uint8, 15> Myarray={4,8,6,8,3,79,145,58,55,54,58,88};
     cout<<Myarray.size()<<std::endl;
     MyBuff.PushArray(Myarray);
+//#if __cplusplus > 201103L     
     MyBuff.PushAuto(Myarray);
+//#endif
     MyBuff.display();
     cout<<MyBuff.GetFreeSize()<<std::endl;
     MyBuff.insert(MyBuff.end(),{11,8,6,8,3,11,145,11,55,11,58,11});

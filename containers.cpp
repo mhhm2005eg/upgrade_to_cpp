@@ -16,7 +16,7 @@
  *
  * Created on 18. Juli 2018, 12:28
  */
-
+#include <boost/chrono.hpp>
 #include <cstdlib>
 #include <stdio.h>
 #include <iostream>
@@ -24,6 +24,9 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <stack>
+#include <memory>
+#include <set>
 #include <utility>//pair
 #include <queue>
 
@@ -38,6 +41,9 @@ using namespace std;
  * 
  */
 namespace containers{
+
+template <typename T> void vidPrintAll(T TObj);
+template <typename T> void vidPrintAll_1(T TObj);
 class ctemp{
 public:
     int val;
@@ -46,11 +52,29 @@ public:
     ~ctemp(){cout<<"I am dstr "<<val<<endl;};
     
 };
+
+boost::chrono::high_resolution_clock::time_point t1 ;
+boost::chrono::high_resolution_clock::time_point t2 ;
+
+#define Take_T1() t1=boost::chrono::high_resolution_clock::now()
+#define Take_T2() do{\
+t2 = boost::chrono::high_resolution_clock::now();\
+boost::chrono::nanoseconds sumGlobal;\
+sumGlobal += (boost::chrono::duration_cast<boost::chrono::nanoseconds>(t2-t1));\
+std::cout << sumGlobal << "\n";}while(0)
+
+
+
+
+
+
+
 int main() {
     
     // plain array
     uint16 plain_array[u8Size];
-    for (int i=0; i<u8Size;i++ )cout<<plain_array[i]<<endl;
+    for (int i=0; i<u8Size;i++ )cout<<plain_array[i]<<'\t';
+    cout<<endl;
     cout<<sizeof(plain_array)<<endl;
     
     //array cpp
@@ -63,12 +87,14 @@ int main() {
     cout<<"-----------ARRAY------------"<<endl;
     cout<<"----------------------------"<<endl;
     array<uint16, u8Size> aArray = {55,5,3};
-    for (int i=0; i<u8Size;i++ )cout<<aArray[i]<<aArray.data()[i]<<endl;
+    for (int i=0; i<u8Size;i++ )cout<<aArray[i]<<':'<<aArray.data()[i]<<'\t';
+    cout<<endl;
     //aArray.at(u8Size);
     cout<<sizeof(aArray)<<aArray.size()<<endl;
     cout<<aArray.front()<<" "<<aArray.back()<<endl;
     for(auto pi=aArray.begin(); pi<aArray.end();pi++)
-        cout<<*pi<<endl;
+        cout<<*pi<<'\t';
+    cout<<endl;
     cout<<aArray.size()<<" "<<aArray.max_size()<<endl;
     
     
@@ -88,7 +114,8 @@ int main() {
     cout<<"-----------Vector------------"<<endl;
     cout<<"----------------------------"<<endl;    
     vector<uint16> u16Vector(u8Size);
-    for (int i=0; i<u16Vector.size();i++ )cout<<u16Vector[i]<<u16Vector.data()[i]<<endl;
+    for (int i=0; i<u16Vector.size();i++ )cout<<u16Vector[i]<<':'<<u16Vector.data()[i]<<'\t';
+    cout<<endl;
     cout<<"----------------------------"<<endl;
     vector<uint16> u16Vector2;
     u16Vector2.reserve(u8Size);
@@ -98,16 +125,20 @@ int main() {
     cout<<"----------------------------"<<endl;
     cout<<u16Vector2.size()<<" "<<u16Vector2.capacity()<<endl;
     cout<<"----------------------------"<<endl;
-    for (int i=0; i<u8Size;i++ )cout<<u16Vector2[i]<<endl;
+    for (int i=0; i<u8Size;i++ )cout<<u16Vector2[i]<<'\t';
+    cout<<endl;
     cout<<"----------------------------"<<endl;
     
-    for (int i=0; i<u16Vector2.size();i++ )cout<<u16Vector2[i]<<endl;
+    for (int i=0; i<u16Vector2.size();i++ )cout<<u16Vector2[i]<<'\t';
+    cout<<endl;
     cout<<"----------------------------"<<endl;
     u16Vector2.pop_back();
-    for (int i=0; i<u16Vector2.size();i++ )cout<<u16Vector2[i]<<endl;
+    for (int i=0; i<u16Vector2.size();i++ )cout<<u16Vector2[i]<<'\t';
+    cout<<endl;
     cout<<"----------------------------"<<endl;
     u16Vector2.resize(20);
-    for (int i=0; i<u16Vector2.size();i++ )cout<<u16Vector2[i]<<endl;
+    for (int i=0; i<u16Vector2.size();i++ )cout<<u16Vector2[i]<<'\t';
+    cout<<endl;
     cout<<u16Vector2.size()<<" "<<u16Vector2.capacity()<<endl;
     cout<<"----------------------------"<<endl;
     vector<ctemp> u16Vector3;
@@ -133,7 +164,8 @@ int main() {
     uint16_list.push_front((uint16)0x7788);
     uint16_list.push_back((uint16)0x7700);
     for(list<uint16>::iterator p=uint16_list.begin(); p!=uint16_list.end(); p++)
-        cout<<*p<<endl;
+        cout<<*p<<'\t';
+    cout<<endl;
     uint16_list.insert(uint16_list.begin(), plain_array[0]);
     uint16_list.insert(uint16_list.begin(), plain_array, &plain_array[6]);
     cout<<uint16_list.size()<<endl;
@@ -157,11 +189,11 @@ int main() {
     cout<<dict.size()<<endl;
     cout<<"----------------------------"<<endl;
     for(map<char, int>::iterator p = dict.begin(); p!= dict.end();p++ )
-        cout<< p->first << p->second<<endl;
-    cout<<"----------------------------"<<endl;
+        cout<< p->first << p->second<<'\t';
+    cout<<endl;
     for (auto& p: dict)
-        cout<< p.first << p.second<<endl;
-    cout<<"----------------------------"<<endl;
+        cout<< p.first << p.second<<'\t';
+    cout<<endl;
     
     cout<< dict.at('a') << dict.at('k')<<endl;
     cout<<"----------------------------"<<endl;
@@ -175,6 +207,35 @@ int main() {
     inPair.second = 5;
     cout<<inPair.first<<":"<<inPair.second<<endl;
     
+
+// Stack
+    stack<int,vector<int>> Mystack;
+    
+    Mystack.push(5);
+    Mystack.push(9);
+    while(! Mystack.empty()){
+        cout<< Mystack.top()<<" "<<Mystack.size()<<'\t';
+        Mystack.pop();
+        
+    }
+    cout<<endl;
+    
+    //smart pointer
+    // unique_ptr, resources are pointed by only one unique pointer so if the 
+    // pointer got out of scope the reserved area will be automatically released !
+    // the pointer instance will disrtoy the reserved area within it's distractor 
+    int a = 6;
+    int *r;
+    unique_ptr<int> uiPtr(new int[4]);
+    *uiPtr = 9;
+    //uiPtr.release();
+    cout<< a<<" : "<<sizeof(r)<<" "<<*uiPtr<<" : "<<sizeof(uiPtr)<<endl;
+    
+    shared_ptr<int> shPtr(new int[4]);
+    cout<<*shPtr<<" : "<<sizeof(shPtr)<<endl;
+    cout<<shPtr.get()<<" : "<<*shPtr.get()<<endl;
+    *uiPtr = 91;
+
     //Tuple
     cout<<"----------------------------"<<endl;
     cout<<"------------Tuple-----------"<<endl;
@@ -219,10 +280,38 @@ int main() {
     /*for (auto ins_i:MyQueue)
         cout<<ins_i.<<endl;*/
 
+//set
+    set<int> Myset;
+    Myset.insert(5);Myset.insert(7);Myset.insert(3);
+    
+    //Template function
+    cout<<Myset.find(5)._M_node<<endl;
+    vidPrintAll(Myset);
+    
+    vidPrintAll(u16Vector4);
+    vidPrintAll(uint16_list);
+    Take_T1();
+    vidPrintAll(aArray);
+    Take_T2();
+    
+    Take_T1();
+    vidPrintAll_1(aArray);
+    Take_T2();
+    
     
     return 0;
 }
 
-
-
+template <typename T> void vidPrintAll(T TObj){
+    for(typename T::iterator p=TObj.begin();  p!= TObj.end();p++ )
+    cout<<*p<<'\t';
+    cout<<endl;
+    
+}
+template <typename T> void vidPrintAll_1(T TObj){
+    for(auto& v:TObj)
+    cout<<v<<'\t';
+    cout<<endl;
+    
+}
 }

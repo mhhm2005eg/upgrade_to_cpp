@@ -13,6 +13,19 @@
 
 #ifndef CONTAINERS_H
 #define CONTAINERS_H
+#include <boost/chrono.hpp>
+
+
+boost::chrono::high_resolution_clock::time_point t1 ;
+boost::chrono::high_resolution_clock::time_point t2 ;
+
+#define Take_T1() t1=boost::chrono::high_resolution_clock::now()
+#define Take_T2() do{\
+t2 = boost::chrono::high_resolution_clock::now();\
+boost::chrono::nanoseconds sumGlobal;\
+sumGlobal += (boost::chrono::duration_cast<boost::chrono::nanoseconds>(t2-t1));\
+std::cout << sumGlobal << "\n";}while(0)
+
 
 namespace containers{
     
@@ -22,6 +35,10 @@ namespace functions{
     int main();
 }
 namespace buffer{
+    void main();
+}
+namespace dynamic_allocation{
+    
     void main();
 }
 #endif /* CONTAINERS_H */

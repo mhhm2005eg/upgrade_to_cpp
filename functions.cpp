@@ -20,11 +20,18 @@ void Func_Temp(T X){
 }
 
 //constexpr
-
+#if __cplusplus > 201103L 
 constexpr auto max(auto a, auto b){
     auto ret = (a>b)?a:b;
     return ret;
 }
+#else
+template<typename  T>  T max(T a, T b){
+    auto ret = (a>b)?a:b;
+    return ret;
+}
+#endif
+
 
 
 int main(){

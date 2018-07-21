@@ -30,7 +30,11 @@ public:
     template<std::size_t SIZE> void PushArray(std::array<uint8, SIZE> Array);
     void PushPlainArray(uint8* pu8, vector::size_type i_Size);
     void PushVector(std::vector<uint8> Vector);
+#if __cplusplus > 201103L    
     void PushAuto(auto Vector);
+#else
+    template<typename T> void PushAuto(T Vector);   
+#endif    
     std::size_t GetFreeSize();
     void display();
     void dump(std::size_t Max);
