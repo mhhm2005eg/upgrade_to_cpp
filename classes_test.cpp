@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 #include <iostream>
-
+#include "common.h"
 using namespace std;
 
 /*
@@ -41,6 +41,7 @@ public:
 };
 
 void main(){
+    DispalySection("CLASSES");
     ParentClass P;
     ChildClass C;
     cout<<P.pbX<<endl;

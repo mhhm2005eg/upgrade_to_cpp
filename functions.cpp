@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <typeinfo>
+#include "common.h"
 
 using namespace std;
 
@@ -32,14 +33,22 @@ template<typename  T>  T max(T a, T b){
 }
 #endif
 
-
+void vidDefaultArguemnets(int a, int b = 0, int c = 0){
+    
+    std::cout<<(a+b)+c<<std::endl;
+    
+    
+}
 
 int main(){
     
+    DispalySection("FUNCTIONS");
     Func_Temp((char)6);
     auto ret = max(5,6);
     auto ret1 = max((unsigned char)5,(unsigned char)6);
     cout<<sizeof(ret)<<'\t'<<sizeof(ret1)<<endl;
-    
+    vidDefaultArguemnets(1);
+    vidDefaultArguemnets(1,2);
+    vidDefaultArguemnets(1,2, 3);
 }
 }

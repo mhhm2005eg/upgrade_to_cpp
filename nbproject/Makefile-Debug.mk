@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/buffer.o \
 	${OBJECTDIR}/classes_test.o \
+	${OBJECTDIR}/common.o \
 	${OBJECTDIR}/containers.o \
 	${OBJECTDIR}/dynamic_allocation.o \
 	${OBJECTDIR}/functions.o \
@@ -76,6 +77,11 @@ ${OBJECTDIR}/classes_test.o: classes_test.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/classes_test.o classes_test.cpp
+
+${OBJECTDIR}/common.o: common.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/common.o common.cpp
 
 ${OBJECTDIR}/containers.o: containers.cpp 
 	${MKDIR} -p ${OBJECTDIR}

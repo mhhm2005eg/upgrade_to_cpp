@@ -7,6 +7,9 @@
 #include <cstdlib>
 #include <stdio.h>
 #include <iostream>
+
+#include "common.h"
+
 typedef unsigned char uint8;
 
 namespace dynamic_allocation{
@@ -31,12 +34,13 @@ vidDump(pu81, MEMORY_SIZE);
 vidDump(pu82, MEMORY_SIZE);
 
 
-delete pu81;
+delete[] pu81, pu81_1;
 std::free(pu82);
 
 }
 
 void main(){
+    DispalySection("Dynamic ALLOCATION");
     vidTest();
 }
 }

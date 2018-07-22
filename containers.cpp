@@ -29,7 +29,7 @@
 #include <set>
 #include <utility>//pair
 #include <queue>
-
+#include "common.h"
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 #define u8Size 10
@@ -71,6 +71,7 @@ std::cout << sumGlobal << "\n";}while(0)
 
 int main() {
     
+    DispalySection("CONTAINERS");
     // plain array
     uint16 plain_array[u8Size];
     for (int i=0; i<u8Size;i++ )cout<<plain_array[i]<<'\t';

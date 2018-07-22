@@ -14,7 +14,7 @@
 #include <array>
 
 #include "buffer.h"
-
+#include "common.h"
 namespace buffer{
 buffer::buffer (unsigned int u32Size) {
     this->reserve(u32Size);
@@ -76,6 +76,9 @@ void buffer::dump(std::size_t Max){
     cout<<std::endl;
 }
 void main(){
+    
+    DispalySection("BUFFER");
+    
     buffer MyBuff(100);
     array<uint8, 15> Myarray={4,8,6,8,3,79,145,58,55,54,58,88};
     cout<<Myarray.size()<<std::endl;
