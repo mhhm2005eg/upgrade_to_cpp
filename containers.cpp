@@ -72,8 +72,11 @@ std::cout << sumGlobal << "\n";}while(0)
 int main() {
     
     DispalySection("CONTAINERS");
+    cout<<"----------------------------"<<endl;
+    cout<<"-----------Plain Array------"<<endl;
+    cout<<"----------------------------"<<endl;
     // plain array
-    uint16 plain_array[u8Size];
+    uint16 plain_array[u8Size]={0xBA00, 0xBA01,0xBA02,0xBA03,0xBA04,0xBA05,0xBA06};
     for (int i=0; i<u8Size;i++ )cout<<plain_array[i]<<'\t';
     cout<<endl;
     cout<<sizeof(plain_array)<<endl;
@@ -88,10 +91,10 @@ int main() {
     cout<<"-----------ARRAY------------"<<endl;
     cout<<"----------------------------"<<endl;
     array<uint16, u8Size> aArray = {55,5,3};
-    for (int i=0; i<u8Size;i++ )cout<<aArray[i]<<':'<<aArray.data()[i]<<'\t';
+    for (int i=0; i<u8Size;i++ )cout<<aArray[i]<<':'<<aArray.at(i)<<':'<<aArray.data()[i]<<'\t';
     cout<<endl;
     //aArray.at(u8Size);
-    cout<<sizeof(aArray)<<aArray.size()<<endl;
+    cout<<sizeof(aArray)<<':'<<aArray.size()<<endl;
     cout<<aArray.front()<<" "<<aArray.back()<<endl;
     for(auto pi=aArray.begin(); pi<aArray.end();pi++)
         cout<<*pi<<'\t';
@@ -115,7 +118,7 @@ int main() {
     cout<<"-----------Vector------------"<<endl;
     cout<<"----------------------------"<<endl;    
     vector<uint16> u16Vector(u8Size);
-    for (int i=0; i<u16Vector.size();i++ )cout<<u16Vector[i]<<':'<<u16Vector.data()[i]<<'\t';
+    for (int i=0; i<u16Vector.size();i++ )cout<<u16Vector[i]<<':'<<u16Vector.at(i)<<':'<<u16Vector.data()[i]<<'\t';
     cout<<endl;
     cout<<"----------------------------"<<endl;
     vector<uint16> u16Vector2;
@@ -167,9 +170,14 @@ int main() {
     for(list<uint16>::iterator p=uint16_list.begin(); p!=uint16_list.end(); p++)
         cout<<*p<<'\t';
     cout<<endl;
+     DisplayVariable(uint16_list);
     uint16_list.insert(uint16_list.begin(), plain_array[0]);
+     DisplayVariable(uint16_list);
     uint16_list.insert(uint16_list.begin(), plain_array, &plain_array[6]);
-    cout<<uint16_list.size()<<endl;
+    DisplayVariable(uint16_list);
+    uint16_list.insert(uint16_list.end(), plain_array, &plain_array[6]);
+    DisplayVariable(uint16_list);
+
     
     //smart pointer
     

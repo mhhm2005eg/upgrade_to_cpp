@@ -8,12 +8,11 @@
 #include <iostream>
 #include "common.h"
 
-using namespace std;
 
 
 
-void DispalyLine(unsigned char L){
-    cout<< std::string(L, '-')<<endl;
+void DispalyLine(char c, unsigned char L){
+    cout<< std::string(L, c)<<endl;
 }
 void DispalySection(std::string S ){
     
@@ -24,4 +23,11 @@ void DispalySection(std::string S ){
     
     DispalyLine();
 }
+
+void vidDump(uint8_t* Array, uint8_t u8Size){
+    std::cout<<"Address: "<<std::hex<<(long int)Array<<std::endl;
+    for(int i=0; i< MEMORY_SIZE; i++)std::cout<<(int)Array[i]<<'\t';
+    std::cout<<std::endl;
+}   
+
 

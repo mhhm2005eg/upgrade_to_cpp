@@ -13,19 +13,38 @@
 
 #ifndef COMMON_H
 #define COMMON_H
-
+#include <iostream>
+#include <typeinfo>
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+using namespace std;
+    
 #define LINE_LENGTH 30
-void DispalyLine(unsigned char L = LINE_LENGTH);
+#define MEMORY_SIZE 10
+    
+void DispalyLine(char c='-', unsigned char L = LINE_LENGTH);
 void DispalySection(std::string S = "Default");
+void vidDump(uint8_t* Array, uint8_t u8Size=MEMORY_SIZE);
 
 
 #ifdef __cplusplus
 }
 #endif
+
+template <typename  T>
+void DisplayVariable(T X){
+    cout<<typeid(T).name()<<endl;
+    std::cout<<"Size: "<< X.size()<<std::endl;
+    for(typename T::iterator p = X.begin(); p!=X.end(); p++)
+        cout<<std::hex<<*p<<'\t';
+    
+    cout<<endl;
+    
+}
+
+
+
 
 #endif /* COMMON_H */
 

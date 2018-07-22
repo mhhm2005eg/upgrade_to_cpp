@@ -14,13 +14,9 @@ typedef unsigned char uint8;
 
 namespace dynamic_allocation{
 
-#define MEMORY_SIZE 10
+
     
-void vidDump(uint8* Array, uint8 u8Size){
-    std::cout<<"Address: "<<std::hex<<(long int)Array<<std::endl;
-    for(int i=0; i< MEMORY_SIZE; i++)std::cout<<(int)Array[i]<<'\t';
-    std::cout<<std::endl;
-}    
+ 
 void vidTest(){
 
 uint8* pu81, *pu81_1;

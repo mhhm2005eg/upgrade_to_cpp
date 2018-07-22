@@ -15,6 +15,7 @@
 
 #include "buffer.h"
 #include "common.h"
+
 namespace buffer{
 buffer::buffer (unsigned int u32Size) {
     this->reserve(u32Size);
